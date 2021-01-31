@@ -1,0 +1,58 @@
+{% import 'macros/useful_macros.njk' as macros %}
+<header class="container-fluid header w-100 bg-gradient-main-theme">
+  <div class="row">
+    <div class="col-lg-1">
+      <a id="sidebarCollapse" class="sidebar-collapse text-default "><i class="fa fa-bars"></i></a>
+    </div>
+    <div class="col-lg-6">
+      <nav class="navbar">
+        <ul class="d-flex m-0 p-0">
+          <li class="navbar__item"><a href="#" class="navbar__link">Home</a></li>
+          <li class="navbar__item"><a href="#" class="navbar__link">About</a></li>
+          <li class="navbar__item"><a href="#" class="navbar__link">Services</a></li>
+          <li class="navbar__item"><a href="#" class="navbar__link">Support</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-5">
+      <nav class="right-navbar">
+        <ul class="d-flex m-0 justify-content-end p-0">
+          <li class="right-navbar__item">
+            <a id="messagesMenuButton" href="#" class="right-navbar__link adjust-attached-modal" adjust-offset="top-center y:25" data-toggle="modal" data-target="#messagesMenu" role="button">
+              <i class="fa fa-envelope-o"></i>
+              <span id="indicatorMS" class="badge badge-info show"></span></a></li>
+          <li class="right-navbar__item">
+            <a id="notificationsMenuButton" href="#" class="right-navbar__link adjust-attached-modal" adjust-offset="top-center y:25" data-toggle="modal" data-target="#notificationsMenu" role="button">
+              <i class="fa fa-bell-o"></i>
+              <span id="indicatorNT" class="badge badge-info show"></span></a></li>
+          <li class="right-navbar__item">
+            <a id="userMenuButton" href="#" class="right-navbar__link dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button" data-offset="-20px, 13px">
+              <i class="fa fa-user"></i>
+              <span class="right-navbar__user-name">Advanda Cro</span>
+              <i class="fa fa-angle-down"></i></a>
+            <div class="dropdown-menu dropdown-menu-material dropdown-menu-material_small py-2">
+              <a href="#" class="dropdown-item dropdown-menu-material__dropdown-item">
+                <div class="dropdown-menu-material__dropdown-item-icon">
+                  <i class="fa fa-home"></i></div>Register</a>
+              <a href="#" class="dropdown-item dropdown-menu-material__dropdown-item">
+                <div class="dropdown-menu-material__dropdown-item-icon">
+                  <i class="fa fa-user"></i></div>My Profile</a>
+              <a href="#" class="dropdown-item dropdown-menu-material__dropdown-item">
+                <div class="dropdown-menu-material__dropdown-item-icon">
+                  <i class="fa fa-diamond"></i></div>Lock</a>
+              <a href="#" class="dropdown-item dropdown-menu-material__dropdown-item">
+                <div class="dropdown-menu-material__dropdown-item-icon">
+                  <i class="fa fa-cog"></i></div>Settings</a>
+              <a href="#" class="dropdown-item dropdown-menu-material__dropdown-item">
+                <div class="dropdown-menu-material__dropdown-item-icon">
+                  <i class="fa fa-lock"></i></div>Log Out</a>
+            </div>
+          </li>
+          <li class="right-navbar__item">
+            <a id="tabmenuMenuButton" href="#" class="right-navbar__link dropdown adjust-attached-modal" adjust-offset="top-right x:15 y:30" data-toggle="modal" data-target="#otherMenu" role="button">
+              <i class="fa fa-tasks"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,71 @@
+{% import "my-custom-plugins/responsive-scrollbar.njk" as responsive_scrollbar %}
+
+{% macro accordion_menu(id, data_content) %}
+  <div class="accordion-menu">
+    <ul class="accordion-menu__ul m-0 p-0" id="{{ id|replace('#','') }}">
+    {% for collapse in data_content %}
+      {% set collapseId = collapse.name|lower|replace(' ','_')|replace('.','_') %}
+      {% set collapseHeadingId = collapseId + '_heading' %}
+      {% if collapse.collapse %}
+      <li class="accordion-menu__collapse card">
+        <div class="accordion-menu__item-heading card-heading collapsed" id="{{ collapseHeadingId }}"
+             data-toggle="collapse" data-target="#{{ collapseId }}"
+             aria-expanded="false" aria-controls="{{ collapseId }}">
+          <div class="accordion-menu__category-link">
+            <div class="user-select-none accordion-menu__icon"><i class="fa {{ collapse['fa-icon'] }}"></i></div>
+            <div class="user-select-none accordion-menu__name">{{ collapse['name'] }}</div>
+          </div>
+        </div>
+      <div class="accordion-menu__container collapse" aria-labelledby="{{ collapseHeadingId }}"
+           data-parent="{{ id }}" id="{{ collapseId }}">
+        <ul class="accordion-menu__content card-body">
+          {% for item in collapse.data %}
+            <li class="accordion-menu__item">
+              <a href="{{ item.link | replace('.html','.njk') | safe_import }}" class="accordion-menu__link">
+                <div class="user-select-none accordion-menu__icon"><i class="fa {{ item['fa-icon'] }}"></i></div>
+                <div class="user-select-none accordion-menu__name">{{ item['name'] }}</div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      </li>
+      {% else %}
+        <li class="accordion-menu__item">
+          <a href="{{ collapse.link | replace('.html','.njk') | safe_import }}" class="accordion-menu__link">
+            <div class="user-select-none accordion-menu__icon"><i class="fa {{ collapse['fa-icon'] }}"></i></div>
+            <div class="user-select-none accordion-menu__name">{{ collapse['name'] }}</div>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}
+
+{% macro material_scrollbar_vertical(width="16px", container=None, content=None) %}
+  {{ responsive_scrollbar.scrollbar_vertical(
+          width=width,
+          theming = { "container": None,
+                      "scroll-area": None,
+                      "scroller": None,
+                      "arrow-1": None,
+                      "arrow-2": None },
+          arrows=False,
+          autohide=True,
+          data_container=container
+          ) }}
+{% endmacro %}
+{% macro search_field() %}
+  <div class="search-field rounded-pill">
+    <form action="#" class="form-control search-field__form">
+      <label for="searchInput" class="sr-only">Search</label>
+      <input type="text" class="search-field__input" id="searchInput" placeholder="Search..." value="" name="search">
+      <div class="search-field__right">
+        <button class="search-field__button btn" type="submit">
+          <span class="search-field__icon"><i class="fa fa-search"></i></span></button>
+        <span class="search-field__overlay"></span>
+      </div>
+    </form>
+  </div>
+{% endmacro %}

@@ -1,0 +1,436 @@
+{% extends 'base.njk' %}
+{% import 'macros/basic-form-element-macros.njk' as bc %}
+{% block current_path %}
+  Home:index.html/Basic element:basic-form-element.html
+{% endblock %}
+{% block body %}
+<div class="row pt-3_4">
+<div class="col-lg-7 mb-4">
+  <div class="sheet h-100">
+    <form action="#" class="basic-login-form">
+      <div class="h4 font-weight-bold">Basic Login Form</div>
+      <div class="d-flex flex-wrap mb-3">
+        <a href="#" class="social social_facebook mr-2"><span class="social__iwrap"><i class="social__icon fa fa-facebook"></i></span><span class="social__text">Facebook</span></a>
+        <a href="#" class="social social_twitter mr-2"><span class="social__iwrap"><i class="social__icon fa fa-twitter"></i></span><span class="social__text">Twitter</span></a>
+        <a href="#" class="social social_google-plus mr-2"><span class="social__iwrap"><i class="social__icon fa fa-google-plus"></i></span><span class="social__text">Google+</span></a>
+        <a href="#" class="social social_linkedin mr-2"><span class="social__iwrap"><i class="social__icon fa fa-linkedin"></i></span><span class="social__text">Linkedin</span></a>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="d-flex flex-column">
+            <h3 class="h3 font-weight-bold">Sign In</h3>
+            <p class="basic-login-form__info-text">Register User can get sign in from here</p>
+            <label for="enterEmail" class="basic-login-form__info-text font-weight-bold">Email</label>
+            <input type="email" class="basic-login-form__input mb-3" placeholder="Enter Email" id="enterEmail">
+            <label for="enterPassword" class="basic-login-form__info-text font-weight-bold">Password</label>
+            <input type="password" class="basic-login-form__input mb-3" placeholder="Password" id="enterPassword">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <div class="mr-1">{{ bc.checkbox('rememberMe') }}</div>
+                <label class="basic-login-form__info-text font-weight-bold m-0" for="rememberMe">Remember Me</label></div>
+              <button type="submit" class="btn btn-material-red">Log In</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 class="h3 font-weight-bold">Not a member?</h3>
+          <p class="basic-login-form__info-text">You can create an account:</p>
+          <a href="#" class="basic-login-form__create-account-button w-100">
+            <i class="fa fa-sign-in"></i></a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="col-lg-5 mb-4">
+  <div class="sheet h-100">
+    <form action="#" class="basic-login-form basic-login-form_horizontal d-flex flex-column">
+      <h4 class="h4 font-weight-bold">Horizontal Login Form</h4>
+      <div class="d-flex flex-wrap mb-3">
+        <a href="#" class="social social_facebook mr-2"><span class="social__iwrap"><i class="social__icon fa fa-facebook"></i></span><span class="social__text">Facebook</span></a>
+        <a href="#" class="social social_twitter mr-2"><span class="social__iwrap"><i class="social__icon fa fa-twitter"></i></span><span class="social__text">Twitter</span></a>
+      </div>
+      <h3 class="h3 font-weight-bold">Sign In</h3>
+      <p class="basic-login-form__info-text">Register User can get sign in from here</p>
+      <div class="row">
+        <div class="col-lg-4 mb-3_4 d-flex align-items-center">
+          <label for="enterEmail2" class="basic-login-form__info-text font-weight-bold m-0">Email</label></div>
+        <div class="col-lg-8 mb-3_4">
+          <input type="email" class="basic-login-form__input" placeholder="Enter Email" id="enterEmail2"></div>
+        <div class="col-lg-4 mb-3_4 d-flex align-items-center">
+          <label for="enterPassword2" class="basic-login-form__info-text font-weight-bold m-0">Password</label></div>
+        <div class="col-lg-8 mb-3_4">
+          <input type="password" class="basic-login-form__input" placeholder="Password" id="enterPassword2"></div>
+        <div class="offset-lg-4 col-lg-8 mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <div class="mr-1">{{ bc.checkbox('rememberMe2') }}</div>
+              <label class="basic-login-form__info-text font-weight-bold m-0" for="rememberMe2">Remember Me</label></div>
+          </div></div>
+        <div class="offset-lg-4 col-lg-8">
+          <button type="submit" class="btn btn-material-red">Sign In</button></div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="col-lg-8 mb-4">
+  <div class="sheet h-100">
+    <form action="#" class="basic-login-form basic-login-form_inline">
+      <h4 class="h4 font-weight-bold">Inline Login Form</h4>
+      <div class="row">
+        <div class="col-lg-3">
+          <label for="enterEmail3" class="basic-login-form__info-text font-weight-bold m-0 sr-only">Email</label>
+          <input type="email" class="basic-login-form__input" placeholder="Enter Email" id="enterEmail3"></div>
+        <div class="col-lg-3">
+          <label for="enterPassword3" class="basic-login-form__info-text font-weight-bold m-0 sr-only">Password</label>
+          <input type="password" class="basic-login-form__input" placeholder="Password" id="enterPassword3"></div>
+        <div class="col-lg-3 d-flex align-items-center">
+          <div class="mr-1">{{ bc.checkbox('rememberMe3') }}</div>
+          <label class="basic-login-form__info-text font-weight-bold m-0" for="rememberMe3">Remember Me</label>
+        </div>
+        <div class="col-lg-3">
+          <button type="submit" class="btn btn-material-red">Sign In</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="col-lg-4 mb-4">
+  <div class="sheet h-100">
+    <form action="#" class="basic-login-form basic-login-form_modal">
+      <h4 class="h4 font-weight-bold">Modal Login Form</h4>
+      <button type="button" class="btn btn-material-red" data-toggle="modal" data-target="#modalLoginForm">Modal Login Form</button>
+    </form>
+  </div>
+</div>
+</div>
+<div class="sheet mb-3_4">
+<form action="#" class="basic-login-form">
+  <h4 class="h4 font-weight-bold">All Form Element</h4>
+  <div class="row">
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="normalInput" class="basic-login-form__info-text font-weight-bold m-0">Normal</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('normalInput') }}
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="supportTextInput" class="basic-login-form__info-text font-weight-bold m-0">Support text</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.support_text_input('supportTextInput') }}
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="fullNameInput" class="basic-login-form__info-text font-weight-bold m-0">Full name</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.full_name_input('fullNameInput') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="usernameInput" class="basic-login-form__info-text font-weight-bold m-0">Username</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.username_input('usernameInput') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="emailInput" class="basic-login-form__info-text font-weight-bold m-0">Email</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.email_input('emailInput') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="passwordInput" class="basic-login-form__info-text font-weight-bold m-0">Password</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.password_input('passwordInput') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputWithPlaceholder" class="basic-login-form__info-text font-weight-bold m-0">Placeholder</label></div>
+    <div class="col-lg-9 mb-3_4">{{ bc.normal_input('inputWithPlaceholder', 'Placeholder') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="disabledInput" class="basic-login-form__info-text font-weight-bold m-0">Disabled</label></div>
+    <div class="col-lg-9 mb-3_4">{{ bc.normal_input('disabledInput', placeholder='Disabled input here', disabled=true) }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="defaultCheckbox" class="basic-login-form__info-text font-weight-bold m-0">Bootstrap Default Checkbox</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.default_checkbox('defaultCheckbox') }}
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label class="basic-login-form__info-text font-weight-bold m-0">Bootstrap Default Radio</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.default_radios('defaultRadios', 2, checked=1, classes='mr-1') }}
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label class="basic-login-form__info-text font-weight-bold m-0">Inline Checkbox</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="d-flex align-items-center">
+        <div class="mr-1">{{ bc.default_checkbox('checkboxA', checked=true) }}</div>
+        <label for="checkboxA" class="basic-login-form__info-text font-weight-bold mr-1">a</label>
+        <div class="mr-1">{{ bc.default_checkbox('checkboxB', checked=true) }}</div>
+        <label for="checkboxB" class="basic-login-form__info-text font-weight-bold mr-1">b</label>
+        <div class="mr-1">{{ bc.default_checkbox('checkboxC') }}</div>
+        <label for="checkboxC" class="basic-login-form__info-text font-weight-bold mr-1">c</label>
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-start justify-content-end">
+      <label for="" class="basic-login-form__info-text font-weight-bold m-0">Custom Checkbox and Radios</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.checkbox('optionOne') }}</div>
+        <label for="optionOne" class="basic-login-form__info-text font-weight-bold m-0">Option one</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.checkbox('optionTwo', checked=true) }}</div>
+        <label for="optionTwo" class="basic-login-form__info-text font-weight-bold m-0">Option two</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.checkbox('optionThree', disabled=true) }}</div>
+        <label for="optionThree" class="basic-login-form__info-text font-weight-bold m-0">Option three</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.checkbox('optionFour', checked=true, disabled=true) }}</div>
+        <label for="optionFour" class="basic-login-form__info-text font-weight-bold m-0">Option four</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.radio('customRadios', 1, checked=true) }}</div>
+        <label for="customRadios-1" class="basic-login-form__info-text font-weight-bold m-0">Option one checked</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.radio('customRadios', 2) }}</div>
+        <label for="customRadios-2" class="basic-login-form__info-text font-weight-bold m-0">Option two</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.radio('customRadios2', 3, checked=true, disabled=true) }}</div>
+        <label for="customRadios-3" class="basic-login-form__info-text font-weight-bold m-0">Option three checked and disabled</label></div>
+      <div class="d-flex align-items-center mb-2">
+        <div class="mr-1">{{ bc.radio('customRadios2', 4, disabled=true) }}</div>
+        <label for="customRadios-4" class="basic-login-form__info-text font-weight-bold m-0">Option four disabled</label></div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="" class="basic-login-form__info-text font-weight-bold m-0">Inline Checkbox</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="d-flex h-100 align-items-center">
+        <div class="mr-1">{{ bc.checkbox('inlineCheckboxA') }}</div><label class="basic-login-form__info-text m-0 mr-1 d-flex align-items-center font-weight-bold h-100" for="inlineCheckboxA">a</label>
+        <div class="mr-1">{{ bc.checkbox('inlineCheckboxB') }}</div><label class="basic-login-form__info-text m-0 mr-1 d-flex align-items-center font-weight-bold h-100" for="inlineCheckboxB">b</label>
+        <div class="mr-1">{{ bc.checkbox('inlineCheckboxC') }}</div><label class="basic-login-form__info-text m-0 mr-1 d-flex align-items-center font-weight-bold h-100" for="inlineCheckboxC">c</label>
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="select" class="basic-login-form__info-text font-weight-bold m-0">Select</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <select name="account" id="select" class="basic-login-form__input">
+        <option value="Select 1">Select 1</option>
+        <option value="Select 2">Select 2</option>
+        <option value="Select 3">Select 3</option>
+      </select></div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="selectMultiple" class="basic-login-form__info-text font-weight-bold m-0">Select Multiple</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <select name="selectMultiple" id="selectMultiple" multiple class="basic-login-form__input h-auto">
+          <option value="option 1">option 1</option>
+          <option value="option 2">option 2</option>
+          <option value="option 3">option 3</option>
+          <option value="option 4">option 4</option>
+        </select></div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="successInput" class="basic-login-form__info-text font-weight-bold m-0">Input with success</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('successInput', classes='basic-login-form__input_success') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="warningInput" class="basic-login-form__info-text font-weight-bold m-0">Input with warning</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('warningInput', classes='basic-login-form__input_warning') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="errorInput" class="basic-login-form__info-text font-weight-bold m-0">Input with error</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('errorInput', classes='basic-login-form__input_error') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputLg" class="basic-login-form__info-text font-weight-bold m-0">Input Sizing Lg</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('inputLg', classes='basic-login-form__input_lg', placeholder='__input_lg') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputNormalSizing" class="basic-login-form__info-text font-weight-bold m-0">Input Sizing Default</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('inputNormalSizing', placeholder='Default input') }}</div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputSm" class="basic-login-form__info-text font-weight-bold m-0">Input Sizing Sm</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.normal_input('inputSm', classes='basic-login-form__input_sm', placeholder='__input_sm') }}
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="" class="basic-login-form__info-text font-weight-bold m-0">Column sizing</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="row">
+        <div class="col-md-2">{{ bc.normal_input('colmd2Input', placeholder='.col-md-2') }}</div>
+        <div class="col-md-4">{{ bc.normal_input('colmd4Input', placeholder='.col-md-4') }}</div>
+        <div class="col-md-6">{{ bc.normal_input('colmd6Input', placeholder='.col-md-6') }}</div>
+      </div></div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputGroups@" class="basic-login-form__info-text font-weight-bold m-0">Input groups @</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group d-flex">
+        <div class="input-group-prepend input-group-addon">
+          <span class="input-group-text">@</span></div>
+        {{ bc.username_input('inputGroups@', placeholder='Username') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputGroups00" class="basic-login-form__info-text font-weight-bold m-0">Input groups .00</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        {{ bc.normal_input('inputGroups00') }}
+        <div class="input-group-append input-group-addon">
+          <span class="input-group-text">.00</span></div>
+      </div></div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputGroups@00" class="basic-login-form__info-text font-weight-bold m-0">Input Groups @ and .00</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        <div class="input-group-prepend input-group-addon">
+          <span class="input-group-text">@</span></div>
+        {{ bc.normal_input('inputGroups@00') }}
+        <div class="input-group-append input-group-addon">
+          <span class="input-group-text">.00</span></div>
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputGroupsCheckbox" class="basic-login-form__info-text font-weight-bold m-0">Input Groups Checkbox</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        <div class="input-group-prepend input-group-addon">
+          <span class="input-group-text">{{ bc.default_checkbox('checkboxPrepend', classes='h-auto') }}</span>
+        </div>
+        {{ bc.normal_input('inputGroupsCheckbox') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="inputGroupsRadio" class="basic-login-form__info-text font-weight-bold m-0">Input Groups Checkbox</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        <div class="input-group-prepend input-group-addon">
+          <span class="input-group-text">
+            <input class="basic-login-form__default-radio h-auto" value="radioPrepend-1" type="radio" name="radioPrepend" id="radioPrepend-1"></span>
+        </div>
+        {{ bc.normal_input('inputGroupsRadio') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="bootstrapDefaultInputGroup" class="basic-login-form__info-text font-weight-bold m-0">Input Groups Bootstrap Default</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">Go!</a>
+        {{ bc.normal_input('bootstrapDefaultInputGroup') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputGroupsLeftGo" class="basic-login-form__info-text font-weight-bold m-0">Input Groups Left Go</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="btn-group">
+        <a href="#" class="btn btn-material-red btn-material-red_simple">Go!</a>
+        {{ bc.normal_input('InputGroupsLeftGo') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputGroupsRightGo" class="basic-login-form__info-text font-weight-bold m-0">Input Groups Right Go</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="btn-group">
+        {{ bc.normal_input('InputGroupsRightGo') }}
+        <a href="#" class="btn btn-material-red btn-material-red_simple">Go!</a>
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputWithDropdownDefault" class="basic-login-form__info-text font-weight-bold m-0">Input With dropdowns Default</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        <div class="input-group-prepend mr-0">
+          <a href="#" class="btn btn-white border-0 d-flex align-items-center dropdown-toggle" data-toggle="dropdown">Action</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">Action</li>
+            <li class="dropdown-item">Another action</li>
+            <li class="dropdown-item">Something else there</li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item">Separated link</li>
+          </ul>
+        </div>
+        {{ bc.normal_input('InputWithDropdownDefault') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputWithLeftDropdownsCustom" class="basic-login-form__info-text font-weight-bold m-0">Input With left dropdowns Custom</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        <div class="input-group-prepend mr-0">
+          <a href="#" class="btn btn-material-red btn-material-red_simple border-0 d-flex align-items-center dropdown-toggle" data-toggle="dropdown">Action</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">Action</li>
+            <li class="dropdown-item">Another action</li>
+            <li class="dropdown-item">Something else there</li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item">Separated link</li>
+          </ul>
+        </div>
+        {{ bc.normal_input('InputWithLeftDropdownsCustom', placeholder='Custom dropdowns button') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputWithRightDropdownsCustom" class="basic-login-form__info-text font-weight-bold m-0">Input With right dropdowns Custom</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="input-group">
+        {{ bc.normal_input('InputWithRightDropdownsCustom') }}
+        <div class="input-group-prepend mr-0">
+          <a href="#" class="btn btn-material-red btn-material-red_simple border-0 d-flex align-items-center dropdown-toggle" data-toggle="dropdown">Action</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">Action</li>
+            <li class="dropdown-item">Another action</li>
+            <li class="dropdown-item">Something else there</li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item">Separated link</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputSegmentedDefault" class="basic-login-form__info-text font-weight-bold m-0">Input Segmented Default</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="btn-group">
+        <a href="#" class="btn btn-white border-0 d-flex align-items-center">Action</a>
+        <a href="#" class="btn btn-white border-0 d-flex align-items-center dropdown-toggle rounded-0" data-toggle="dropdown"><span class="sr-only">Toggle dropdown</span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">Action</li>
+          <li class="dropdown-item">Another action</li>
+          <li class="dropdown-item">Something else there</li>
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-item">Separated link</li>
+        </ul>
+        {{ bc.normal_input('InputSegmentedDefault') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputLeftSegmented" class="basic-login-form__info-text font-weight-bold m-0">Input Left Segmented</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="btn-group">
+        <a href="#" class="btn btn-material-red btn-material-red_simple border-0 d-flex align-items-center">Action</a>
+        <a href="#" class="btn btn-material-red btn-material-red_simple border-0 d-flex align-items-center dropdown-toggle rounded-0" data-toggle="dropdown"><span class="sr-only">Toggle dropdown</span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">Action</li>
+          <li class="dropdown-item">Another action</li>
+          <li class="dropdown-item">Something else there</li>
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-item">Separated link</li>
+        </ul>
+        {{ bc.normal_input('InputLeftSegmented') }}
+      </div>
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="InputRightSegmented" class="basic-login-form__info-text font-weight-bold m-0">Input right Segmented</label></div>
+    <div class="col-lg-9 mb-3_4">
+      <div class="btn-group">
+        {{ bc.normal_input('InputRightSegmented') }}
+        <a href="#" class="btn btn-material-red btn-material-red_simple border-0 d-flex align-items-center">Action</a>
+        <a href="#" class="btn btn-material-red btn-material-red_simple border-0 d-flex align-items-center dropdown-toggle rounded-0" data-toggle="dropdown"><span class="sr-only">Toggle dropdown</span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">Action</li>
+          <li class="dropdown-item">Another action</li>
+          <li class="dropdown-item">Something else there</li>
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-item">Separated link</li>
+        </ul>
+      </div></div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="FileUploadSystemLeft" class="basic-login-form__info-text font-weight-bold m-0">File Upload System Left</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.file_upload('FileUploadSystemLeft', false) }}
+    </div>
+    <div class="col-lg-3 mb-3_4 d-flex align-items-center justify-content-end">
+      <label for="FileUploadSystemLeftIcon" class="basic-login-form__info-text font-weight-bold m-0">File Upload System Left Icon</label></div>
+    <div class="col-lg-9 mb-3_4">
+      {{ bc.file_upload('FileUploadSystemLeftIcon', true) }}
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}

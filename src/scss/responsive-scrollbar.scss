@@ -1,0 +1,53 @@
+$dragger-rail-bg-color: rgba(0,0,0,.4) !default;
+$scroller-bg-color: rgba(255,255,255,.75) !default;
+$scroller-bg-active-color: rgba(255,255,255,.9) !default;
+$dragger-rail-width: 2px !default;
+$scroller-width: 4px !default;
+$scroller-offset: 0px !default;
+
+.responsive-scrollbar {
+  $root: &;
+  padding: $scroller-offset 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  &_show {
+    opacity: 1;
+  }
+  &__arrow-up, &__arrow-down {
+
+  }
+  &__scroll-area {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    transition: inherit;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -$scroller-offset;
+      height: calc(100% + #{$scroller-offset} * 2);
+      background-color: $dragger-rail-bg-color;
+      width: $dragger-rail-width;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+  }
+  &__scroller {
+    position: absolute;
+    top: 0;
+    width: $scroller-width;
+    background-color: $scroller-bg-color;
+    height: 100px;
+    border-radius: 2px;
+    z-index: 2;
+    transition: inherit;
+  }
+  &_active {
+    #{$root}__scroller {
+      background-color: $scroller-bg-active-color;
+    }
+  }
+}

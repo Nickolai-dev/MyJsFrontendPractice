@@ -1,0 +1,222 @@
+{% import 'macros/useful_macros.njk' as macros %}
+{% import 'macros/basic-form-element-macros.njk' as bc %}
+{% macro include_modals() %}
+<div id="messagesMenu" class="modal w-100 h-100 position-fixed" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="messagesMenuLabel" aria-hidden="true">
+  <div class="modal-dialog" role="menu">
+    <div class="modal-content dropdown-menu-material dropdown-menu-material_center">
+      <div class="modal-header d-none">
+        <button type="button" class="d-none close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="dropdown-menu-material__heading">
+          <span class="h1" id="messagesMenuLabel">Messages</span></div>
+        <div class="dropdown-menu-material__wrapper">
+          <div class="dropdown-menu-material__container" id="messageBoxContainer">
+            <div class="dropdown-menu-material__content">
+            {% for item in messages %}
+              <span class="dropdown-message">
+                <span class="media dropdown-message__media-container">
+                  <img class="dropdown-message__media-img" src="{{ item.photo or 'img/contact'|random_file }}" alt="">
+                  <span class="media-body dropdown-message__media-body">
+                    <span class="d-flex dropdown-message__media-heading">
+                      <span class="h2 dropdown-message__name m-0">{{ item.name }}</span>
+                      <span class="dropdown-message__date">{{ item.date }}</span>
+                    </span>
+                    <span class="dropdown-message__media-content">{{ item.short_descr|shorten(60) }}</span>
+                  </span>
+                </span>
+              </span>
+            {% endfor %}
+            </div>
+          </div>
+          {{ macros.material_scrollbar_vertical(container="#messageBoxContainer") }}
+        </div>
+        <div class="dropdown-menu-material__bottom-btn position-relative">
+          <a href="#" class="h2 text-decoration-none">View All Messages</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="notificationsMenu" class="modal w-100 h-100 position-fixed" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="notificationsMenuLabel" aria-hidden="true">
+  <div class="modal-dialog" role="menu">
+    <div class="modal-content dropdown-menu-material dropdown-menu-material_center">
+      <div class="modal-header d-none">
+        <button type="button" class="d-none close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="dropdown-menu-material__heading">
+          <span class="h1" id="notificationsMenuLabel">Notifications</span></div>
+        <div class="dropdown-menu-material__wrapper">
+          <div class="dropdown-menu-material__container" id="notificationsBoxContainer">
+            <div class="dropdown-menu-material__content">
+            {% set assoc = {'success': 'fa-check', 'cloud-disk': 'fa-cloud', 'erase': 'fa-eraser', 'stonks': 'fa-line-chart'} %}
+            {% for item in notifications %}
+              <span class="dropdown-message">
+                <span class="media dropdown-message__media-container">
+                  <span class="dropdown-message__media-icon">
+                    <i class="fa {{ assoc[item.type] }}"></i>
+                  </span>
+                  <span class="media-body dropdown-message__media-body">
+                    <span class="d-flex dropdown-message__media-heading">
+                      <span class="h2 dropdown-message__name m-0">{{ item.name }}</span>
+                      <span class="dropdown-message__date">{{ item.date }}</span>
+                    </span>
+                    <span class="dropdown-message__media-content">{{ item.short_descr|shorten(60) }}</span>
+                  </span>
+                </span>
+              </span>
+            {% endfor %}
+            </div>
+          </div>
+          {{ macros.material_scrollbar_vertical(container="#notificationsBoxContainer") }}
+        </div>
+        <div class="dropdown-menu-material__bottom-btn position-relative">
+          <a href="#" class="h2 text-decoration-none">View All Messages</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="otherMenu" class="modal w-100 h-100 position-fixed" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="otherMenuLabel" aria-hidden="true">
+  <div class="modal-dialog" role="menu">
+    <div class="modal-content dropdown-menu-material dropdown-menu-material_large">
+      <div class="modal-header d-none">
+        <button type="button" class="d-none close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="dropdown-menu-material__heading d-none">
+          <span class="h1" id="otherMenuLabel">Tabs</span></div>
+        <div class="p-3">
+          <ul class="nav nav-tabs tabs-material-nav" role="tablist" id="myTab">
+            <li class="nav-item tabs-material-nav__item">
+              <a href="#news" class="nav-link tabs-material-nav__link active" id="news-tab" data-toggle="tab" role="tab" aria-controls="news" aria-selected="true">News</a>
+            </li><li class="nav-item tabs-material-nav__item">
+              <a href="#activity" class="nav-link tabs-material-nav__link" id="activity-tab" data-toggle="tab" role="tab" aria-controls="activity" aria-selected="false">Activity</a>
+            </li><li class="nav-item tabs-material-nav__item">
+              <a href="#settings" class="nav-link tabs-material-nav__link" id="settings-tab" data-toggle="tab" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
+            </li>
+          </ul>
+          <div class="tab-content tabs-material-content">
+            <div class="tab-pane fade active show" id="news" role="tabpanel" aria-labelledby="news-tab">
+              <div class="tabs-material-content__heading h2 d-flex"><i class="fa fa-comments-o mr-1"></i>
+              Latest News</div>
+              <p class="tabs-material-content__info">You have 10 new News</p>
+              <div class="dropdown-menu-material__wrapper">
+                <div class="dropdown-menu-material__container" id="newsContainer">
+                  <div class="dropdown-menu-material__content pl-0 py-0 pr-3">
+                    {% for i in [0,1,2,3,4,5,6,7,8,9] %}
+                    <div class="dropdown-message mb-3">
+                      <div class="media dropdown-message__media-container">
+                        <img src="{{ 'img/contact'|random_file }}" alt="" class="dropdown-message__media-img rounded-circle mr-3" style="width: 60px; height: 60px;">
+                        <div class="media-body dropdown-message__media-body pl-0">
+                          <p class="dropdown-message__media-content mb-1" style="line-height: 1.4">The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
+                          <span class="dropdown-message__date" style="font-style: normal;">Yesterday 2:45 pm</span>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                {{ macros.material_scrollbar_vertical(container='#newsContainer') }}
+              </div>
+            </div>
+            <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+              <div class="tabs-material-content__heading h2 d-flex"><i class="fa fa-cube mr-1"></i>
+              Recent Activity</div>
+              <p class="tabs-material-content__info pb-2">You have 20 Recent Activity</p>
+              <div class="dropdown-menu-material__wrapper">
+                <div class="dropdown-menu-material__container" id="activityContainer">
+                  <div class="dropdown-menu-material__content pl-0 py-0 pr-3">
+                    {% for i in [1,2,3,4,5,6,7,9] %}
+                    <div class="dropdown-message mb-3">
+                      <div class="media dropdown-message__media-container">
+                        <div class="media-body dropdown-message__media-body pl-0">
+                          <div class="d-flex dropdown-message__media-heading h2">
+                            New User Registered
+                            <span class="dropdown-message__date" style="font-style: normal; font-weight: 400;">{{ i }} hours ago</span>
+                          </div>
+                          <p class="dropdown-message__media-content mb-1" style="line-height: 1.4">The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                {{ macros.material_scrollbar_vertical(container='#activityContainer') }}
+              </div>
+            </div>
+            <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+              <div class="tabs-material-content__heading h2 d-flex"><i class="fa fa-gears mr-1"></i>
+              Settings Panel</div>
+              <p class="tabs-material-content__info pb-2 mb-1">You have 20 Settings. 5 not completed.</p>
+              <div class="dropdown-menu-material__wrapper">
+                <div class="dropdown-menu-material__container" id="settingsContainer">
+                  <div class="dropdown-menu-material__content w-100 pl-0 py-0 pr-3">
+                    <form action="#" class="settings-form">
+                      {% for set in [['Show notifications', false], ['Disable Chat', false], ['Enable history', false], ['Show charts', false], ['Update everyday', true], ['Global search', true], ['Offline users', true]] %}
+                      <div class="settings-form__item">
+                        <label class="user-select-none settings-form__item-name h2 m-0" for="{{ set[0]|replace(' ','-')|lower }}">{{ set[0] }}</label>
+                        <input class="custom-checkbox" type="checkbox" name="{{ set[0]|replace(' ', '-')|lower }}" id="{{ set[0]|replace(' ','-')|lower }}" value="{{ set[1]|string|lower }}">
+                      </div>
+                      {% endfor %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modalLoginForm" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalLoginFormLabel" aria-hidden="true">
+  <div class="modal-dialog modal-login" style="max-width: unset;" role="menu">
+    <div class="modal-content sheet shadow-lg rounded-0 p-0">
+      <div class="modal-header sr-only">
+        <label for="" id="modalLoginFormLabel">Log In</label>
+      </div>
+      <div class="modal-body p-5 position-relative">
+        <button type="button" class="close position-absolute" style="top: 20px; right: 25px;width: 0;height: 0;display: flex;line-height: 0;" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <form action="#" class="basic-login-form">
+
+          <div class="d-flex flex-wrap mb-3">
+            <a href="#" class="social social_facebook mr-2"><span class="social__iwrap"><i class="social__icon fa fa-facebook"></i></span><span class="social__text">Facebook</span></a>
+            <a href="#" class="social social_twitter mr-2"><span class="social__iwrap"><i class="social__icon fa fa-twitter"></i></span><span class="social__text">Twitter</span></a>
+            <a href="#" class="social social_google-plus mr-2"><span class="social__iwrap"><i class="social__icon fa fa-google-plus"></i></span><span class="social__text">Google+</span></a>
+          </div>
+          <h3 class="h3 font-weight-bold">Sign In</h3>
+          <p class="basic-login-form__info-text">Register User can get sign in from here</p>
+          <div class="row">
+            <div class="col-lg-4 mb-3_4 d-flex align-items-center">
+              <label for="enterEmail4" class="basic-login-form__info-text font-weight-bold m-0">Email</label></div>
+            <div class="col-lg-8 mb-3_4">
+              <input type="email" class="basic-login-form__input" placeholder="Enter Email" id="enterEmail4"></div>
+            <div class="col-lg-4 mb-3_4 d-flex align-items-center">
+              <label for="enterPassword4" class="basic-login-form__info-text font-weight-bold m-0">Password</label></div>
+            <div class="col-lg-8 mb-3_4">
+              <input type="password" class="basic-login-form__input" placeholder="Password" id="enterPassword4"></div>
+            <div class="offset-lg-4 col-lg-8 mb-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <div class="mr-1">{{ bc.checkbox('rememberMe4') }}</div>
+                  <label class="basic-login-form__info-text font-weight-bold m-0" for="rememberMe4">Remember Me</label></div>
+              </div></div>
+            <div class="offset-lg-4 col-lg-8">
+              <button type="submit" class="btn btn-material-red">Sign In</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

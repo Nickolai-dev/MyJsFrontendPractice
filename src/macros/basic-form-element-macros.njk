@@ -1,0 +1,48 @@
+{% macro normal_input(id, placeholder=None, disabled=false, classes=None) %}
+<input type="text" class="basic-login-form__input{% if classes %}{% if classes|isObj %}{% for cl in classes %} {{ cl }}{% endfor %}{% else %} {{ classes }}{% endif %}{% endif %}" id="{{ id }}"{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if disabled %} disabled=""{% endif %}>
+{% endmacro %}
+{% macro support_text_input(id, placeholder=None, disabled=false) %}
+<input type="text" class="basic-login-form__input" id="{{ id }}"{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if disabled %} disabled=""{% endif %}>
+{% endmacro %}
+{% macro full_name_input(id, placeholder=None, disabled=false) %}
+<input type="text" class="basic-login-form__input" id="{{ id }}" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}{% if disabled %} disabled=""{% endif %}>
+{% endmacro %}
+{% macro username_input(id, placeholder=None, disabled=false) %}
+<input type="text" class="basic-login-form__input" id="{{ id }}"{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if disabled %} disabled=""{% endif %}>
+{% endmacro %}
+{% macro email_input(id, placeholder=None, disabled=false) %}
+<input type="email" class="basic-login-form__input" id="{{ id }}"{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if disabled %} disabled=""{% endif %}>
+{% endmacro %}
+{% macro password_input(id, placeholder=None, disabled=false) %}
+<input type="password" class="basic-login-form__input" id="{{ id }}"{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if disabled %} disabled=""{% endif %}>
+{% endmacro %}
+{% macro default_checkbox(id, disabled=false, checked=false, classes=None) %}
+<input type="checkbox" class="basic-login-form__default-checkbox{% if classes %}{% if classes|isObj %}{% for cl in classes %} {{ cl }}{% endfor %}{% else %} {{ classes }}{% endif %}{% endif %}" id="{{ id }}"{% if checked %} checked=""{% endif %}>
+{% endmacro %}
+{% macro default_radios(name, count, values=None, checked=None, classes=None) %}
+  <div class="basic-login-form__radio-group">
+  {% for i in range(1, count + 1) %}
+    <input class="basic-login-form__default-radio{% if classes %}{% if classes|isObj %} {{ classes[i - 1] }}{% else %} {{ classes }}{% endif %}{% endif %}" value="{% if values %}{{ values[i - 1] }}{% else %}{{ i|string }}{% endif %}" type="radio" name="{{ name }}" id="{{ name|string + '-' + i|string }}"{% if i == checked %} checked=""{% endif %}>
+  {% endfor %}
+  </div>
+{% endmacro %}
+{% macro checkbox(id, checked=false, disabled=false) %}
+<div class="basic-login-form__checkbox{% if checked %} basic-login-form__checkbox_checked{% endif %}{% if disabled %} basic-login-form__checkbox_disabled{% endif %}">
+  <input class="basic-login-form__checkbox-check" type="checkbox" name="{{ id }}" id="{{ id }}"{% if checked %} checked=""{% endif %}{% if disabled %} disabled=""{% endif %}>
+</div>
+{% endmacro %}
+{% macro radio(name, value, checked=false, disabled=false) %}
+  <div class="basic-login-form__radio{% if checked %} basic-login-form__radio_checked{% endif %}{% if disabled %} basic-login-form__radio_disabled{% endif %}">
+    <input class="basic-login-form__radio-radio" value="{{ value }}" type="radio" name="{{ name }}" id="{{ name|string + '-' + value|string }}"{% if checked %} checked=""{% endif %}{% if disabled %} disabled=""{% endif %}>
+  </div>
+{% endmacro %}
+{% macro file_upload(id, icon=true) %}
+  <div class="basic-login-form__file-upload">
+    <div class="basic-login-form__file-upload-button btn btn-material-red btn-material-red_simple overflow-hidden">Browse
+      <input class="basic-login-form__file-upload-input" type="file" name="{{ id }}" id="{{ id }}" onchange="document.getElementById('{{ id|string + '-text' }}').value = this.value;"></div>
+    {{ normal_input(id|string + '-text', placeholder='no file selected') }}
+  {% if icon %}
+    <i class="fa fa-upload basic-login-form__file-upload-icon"></i>
+  {% endif %}
+  </div>
+{% endmacro %}

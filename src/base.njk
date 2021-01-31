@@ -1,0 +1,74 @@
+{% import "macros/useful_macros.njk" as macros %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="UTF-8">
+  {#
+  http://htmlbook.ru/content/metategi
+  <meta name="description" content="">
+  #}
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jeweller-template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="scss/style.scss">
+  <meta name="theme-color" content="#fafafa">
+  <script src="js/main.js"></script>
+  {# https://habr.com/ru/company/click/blog/492258/
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content=""> #}
+</head>
+<body style="">
+<div class="d-flex">
+  <aside class="menu-bar" id="sidebar1">
+    <div class="menu-bar__header"><a href="index.njk" class="logo">
+      <img src="img/logo/logo.png" alt="" class="img-fluid logo__image"></a></div>
+    <nav class="menu-bar__nav">
+      <div class="menu-bar__accordion-container h-100 overflow-hidden" id="accordionContainer">
+        {{ macros.accordion_menu('#accordionMenu1', menu_left_content) }}
+      </div>
+      {{ macros.material_scrollbar_vertical(container="#accordionContainer") }}
+    </nav>
+  </aside>
+  <section class="contents w-100">
+    {% include 'header.njk' %}
+    <div class="container-fluid bar-search bg-gradient-main-theme">
+      <div class="row">
+        <div class="col-6">
+          {{ macros.search_field() }}
+        </div>
+        <div class="col-6">
+          <div class="d-flex justify-content-end align-items-center h-100">
+            <div class="current-path">
+              <div id="currentPath" class="d-none">{% block current_path %}{% endblock %}</div>
+              <ul class="current-path__display p-0 m-0"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 bar-search__dashboard-content">
+        {% block dashboard_content %}
+        {% endblock %}
+      </div>
+    </div>
+  <main class="container-fluid content-main" style="min-height: 600px;">
+  {% block body %}
+  {% endblock %}
+  </main>
+  </section>
+</div>
+  {#<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+   <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview');
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+  #}
+{% import 'modals.njk' as modals %}
+{{ modals.include_modals() }}
+</body>
+</html>

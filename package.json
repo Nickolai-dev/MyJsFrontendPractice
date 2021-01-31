@@ -1,0 +1,35 @@
+{
+  "name": "jeweller-html-bootstrap-template",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "html template",
+    "bootstrap template",
+    "jquery template",
+    "admin dashboard template",
+    "nunjunks template"
+  ],
+  "license": "MIT, original design by (c) colorlib, https://colorlib.com. Redesign by N. Soleniy, n.solenii2016@gmail.com",
+  "author": "n.solenii2016@gmail.com",
+  "scripts": {
+    "build": "npm run clean && parcel build src/index.njk --no-cache --public-url \"./\" --no-source-maps",
+    "dev": "parcel src/index.njk --public-url \"./\" --no-source-maps",
+    "start": "npm run build && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist .*cache*/ test/tests/*/dist"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.5.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "node-forge": "^0.10.0",
+    "nunjucks": "^3.2.2",
+    "parcel-plugin-nunjucks": "^2.2.2",
+    "popper.js": "^1.16.1",
+    "sass": "1.32.2"
+  },
+  "dependencies": {
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4"
+  }
+}

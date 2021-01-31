@@ -1,0 +1,18 @@
+{% macro scrollbar_vertical(
+    width = "16px",
+    data_container=None,
+    theming = { "container": None,
+                "scroll-area": None,
+                "scroller": None,
+                "arrow-1": None,
+                "arrow-2": None },
+    arrows = False,
+    autohide = True
+    ) %}
+  <div class="responsive-scrollbar h-100 position-absolute{% if theming.container %} {{ theming.container }}{% endif %}"
+       style="width: {{ width }}; right: 0; top: 0;" data-container="{{ data_container }}">
+    <div class="responsive-scrollbar__scroll-area">
+      <div class="responsive-scrollbar__scroller" style="top: 0; transform: translateY(0px);"></div>
+    </div>
+  </div>
+{% endmacro %}
