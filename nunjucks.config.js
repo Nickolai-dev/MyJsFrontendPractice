@@ -81,7 +81,7 @@ module.exports = {
         ]}, {
           name: "Forms Elements", collapse: true, "fa-icon": "fa-table", data: [
             {name: "Bc Form Elements", link: "basic-form-element.html", "fa-icon": "fa-pencil"},
-            {name: "Ad Form Elements", link: "advanced-form-element.html", "fa-icon": "fa-lightbulb-o"},
+            {name: "Ad Form Elements", link: "advance-form-element.html", "fa-icon": "fa-lightbulb-o"},
             {name: "Password Meter", link: "password-meter.html", "fa-icon": "fa-hourglass"},
             {name: "Multi Upload", link: "multi-upload.html", "fa-icon": "fa-hdd-o"},
             {name: "Text Editor", link: "tinymc.html", "fa-icon": "fa-globe"},

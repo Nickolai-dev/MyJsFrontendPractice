@@ -55,7 +55,7 @@
         {% endblock %}
       </div>
     </div>
-  <main class="container-fluid content-main" style="min-height: 600px;">
+  <main class="container-fluid content-main" style="/*min-height: 600px;*/">
   {% block body %}
   {% endblock %}
   </main>
@@ -68,7 +68,7 @@
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async></script>
   #}
-{% import 'modals.njk' as modals %}
+{% import 'macros/modals.njk' as modals %}
 {{ modals.include_modals() }}
 </body>
 </html>

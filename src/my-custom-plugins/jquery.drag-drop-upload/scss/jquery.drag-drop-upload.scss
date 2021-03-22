@@ -1,0 +1,247 @@
+
+@mixin drop-background-hover-style() {
+  filter: blur(1px);
+  &::before, &::after {
+
+  }
+}
+
+@mixin gradient-striped($color: rgba($white, .15), $angle: 45deg) {
+  background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+}
+
+.drag-drop-upload {
+  $root: &;
+  width: 100%;
+  $zindex-forward: 2;
+  $zindex-pre: 1;
+  $zindex-hide: -1;
+  $font-color: #333;
+  &__form {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 2px dashed $material-red;
+    display: flex;
+  }
+  &__submit {
+    display: none;
+  }
+  &__container {
+    width: 100%;
+    height: 100%;
+    min-height: 196px;
+    cursor: pointer;
+    transition: filter ease .1s 0s;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 32px 0 0 32px;
+    &:empty {
+      @extend .fa, .fa-download;
+      &::before, &::after {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $font-color;
+      }
+      &::before {
+        top: calc(50% - 20px);
+        font-size: 40px;
+      }
+      &::after {
+        top: calc(50% + 20px);
+        content: 'Drop files there or click to upload';
+        font-size: 20px;
+        font-family: 'Play', sans-serif;
+        font-weight: 700;
+      }
+    }
+  }
+  &__input-wrap {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zindex-hide;
+    cursor: pointer;
+  }
+  &__input {
+    position: absolute;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 200%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  &_drag-hover {
+    & #{$root}__input-wrap {
+      z-index: $zindex-forward;
+    }
+    & #{$root}__container {
+      @include drop-background-hover-style();
+    }
+  }
+  &_hover {
+    & #{$root}__input-wrap {
+      z-index: $zindex-forward;
+    }
+  }
+}
+.drag-drop-file {
+  $root: &;
+  $zindex-file: 10;
+  $zindex-prewiew: -1;
+  $name-bg-color: rgba(255, 255, 255, 0.4);
+  $name-bg-color-active: #f9f9f9;
+  $size-bg-color: rgba(255, 255, 255, 0.4);
+  $font-color: rgba(0, 0, 0, 0.9);
+  $border: 1px solid rgba(200, 200, 200, 0.8);
+  $this-border-radius: 20px;
+  $progress-height: 10px;
+  $progress-color: #5cb85c;
+  $progress-color-bg: rgba(255, 255, 255, .4);
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: $this-border-radius;
+  background: linear-gradient(to bottom, #eee, #ddd);
+  z-index: $zindex-file;
+  cursor: default;
+  display: flex;
+  padding: 26px 13px;
+  flex-wrap: wrap;
+  margin: 0 32px 32px 0;
+  &__line {
+    width: 100%;
+  }
+  &__preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $this-border-radius;
+    z-index: $zindex-prewiew;
+    pointer-events: none;
+    transition: filter ease .2s 0s;
+  }
+  &__name {
+    font-size: 13px;
+    border-radius: 3px;
+    background-color: $name-bg-color;
+    width: min-content;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $font-color;
+    border: 1px solid transparent;
+    padding: 0 5px;
+    margin: 0 auto;
+    &:hover, &:focus, &:active {
+      max-width: unset;
+      background-color: $name-bg-color-active;
+      border: $border;
+    }
+  }
+  &__size {
+    border-radius: 3px;
+    background-color: $size-bg-color;
+    width: min-content;
+    padding: 0 5px;
+    margin: 0 auto;
+  }
+  &__size-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: $font-color;
+    margin-right: 5px;
+  }
+  &__size-postfix {
+    font-size: 16px;
+    color: $font-color;
+    text-transform: capitalize;
+  }
+  &__progress {
+    position: absolute;
+    height: $progress-height;
+    width: 75%;
+    border-radius: $progress-height / 2;
+    //border: 1px inset rgba(255, 255, 255, .4);
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    box-sizing: content-box;
+    &-bar {
+      //@include gradient-striped();
+      height: $progress-height;
+      background-size: $progress-height $progress-height;
+      background-color: $progress-color;
+      opacity: .75;
+      width: 100%;
+      border-radius: $progress-height / 2;
+      filter: blur(.5px);
+      transition: width linear .1s 0s;
+    }
+  }
+  &__cancel {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: opacity ease 0.3s 0s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-size: 42px;
+    cursor: pointer;
+  }
+  &__success {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: $progress-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: calc(15px + #{$progress-height/2});
+    left: 50%;
+    transform: translate(-50%,50%);
+    color: white;
+    font-size: 14px;
+  }
+  &__error {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #cb0505;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: calc(15px + #{$progress-height/2});
+    left: 50%;
+    transform: translate(-50%,50%);
+    color: white;
+    font-size: 14px;
+  }
+  &:hover {
+    & #{$root}__preview {
+      filter: blur(4px);
+      z-index: -1;
+    }
+    & #{$root}__cancel {
+      opacity: .7;
+    }
+  }
+}

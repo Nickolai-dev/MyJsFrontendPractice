@@ -1,0 +1,204 @@
+{% extends 'base.njk' %}
+{% import 'macros/basic-form-element-macros.njk' as bc %}
+{% import 'macros/advance-form-element-macros.njk' as ac %}
+
+{% block current_path %}
+  Home:index.html/Advanced Form Elements:advance-form-element.html
+{% endblock %}
+
+{% block body %}
+  <div class="row pt-3_4">
+    <div class="col-lg-4">
+      <div class="sheet h-100">
+        <h4 class="h4 font-weight-bold">Input Knob Dial</h4>
+        <div class="row pb-3_4">
+          <div class="col-lg-4">{{ ac.knob_dial(60, fgColor='#1ab394') }}</div>
+          <div class="col-lg-4">{{ ac.knob_dial(25, fgColor='#1ab394') }}</div>
+          <div class="col-lg-4">{{ ac.knob_dial(50, fgColor='#1ab394') }}</div>
+        </div>
+        <div class="row pb-3_4">
+          <div class="col-lg-4">{{ ac.knob_dial(75, fgColor='#ed5565', cursor=true) }}</div>
+          <div class="col-lg-4">{{ ac.knob_dial(25, fgColor='#ed5565', step=1000, min= -15000, max=15000) }}</div>
+          <div class="col-lg-4">{{ ac.knob_dial(60, fgColor='#ed5565', offset=-125, arc=250) }}</div>
+        </div>
+        <div class="row pb-3_4">
+          <div class="col-lg-4">{{ ac.knob_dial(40, noedit=true, fgColor='#03a9f4', displayPrevious=true) }}</div>
+          <div class="col-lg-4">{{ ac.knob_dial(80, noedit=true, fgColor='#03a9f4', displayPrevious=true, cursor=true, step=10) }}</div>
+          <div class="col-lg-4">{{ ac.knob_dial(44, noedit=true, fgColor='#03a9f4', skin='tron', thickness=".1", offset=180, anticlockwise=true) }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="sheet h-100">
+        <h4 class="h4 font-weight-bold">Ion Range Slider</h4>
+        <div class="pb-3"> {{ ac.range_slider_price('irs-1', 0, 5000) }}</div>
+        <div class="pb-3"> {{ ac.range_slider_carats('irs-2', from=5) }}</div>
+        <div class="pb-3"> {{ ac.range_slider_temperature('irs-3', from=0) }}</div>
+        <div class="pb-3"> {{ ac.range_slider_date('irs-4', from=3) }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-4 mb-4">
+    <div class="col-lg-6">
+      <div class="sheet h-100">
+        <h4 class="h4 font-weight-bold">Chosen Select</h4>
+        <div class="mb-3">{{ ac.select('chosen-select', label='Basic select', options=['Afghanistan', 'Akrotiri', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Ashmore and Cartier Islands', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas, The', 'Bahrain', 'Bangladesh', 'Barbados', 'Bassas da India', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Clipperton Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Cook Islands', 'Coral Sea Islands', 'Costa Rica', "Cote d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dhekelia', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Europa Island', 'Falkland Islands (Islas Malvinas)', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'French Southern and Antarctic Lands', 'Gabon', 'Gambia, The', 'Gaza Strip', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Glorioso Islands', 'Greece', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard Island and McDonald Islands', 'Holy See (Vatican City)', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Jan Mayen', 'Japan', 'Jersey', 'Jordan', 'Juan de Nova Island', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia, Federated States of', 'Moldova', 'Monaco', 'Mongolia', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nauru', 'Navassa Island', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paracel Islands', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Helena', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Pierre and Miquelon', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Georgia and the South Sandwich Islands', 'Spain', 'Spratly Islands', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tromelin Island', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Virgin Islands', 'Wake Island', 'Wallis and Futuna', 'West Bank', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe']) }}</div>
+        <div class="mb-0">{{ ac.select('chosen-select-multiple', multiple=true, placeholder='Choose a Country', label='Multi select', options=['Afghanistan', 'Akrotiri', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Ashmore and Cartier Islands', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas, The', 'Bahrain', 'Bangladesh', 'Barbados', 'Bassas da India', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Clipperton Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Cook Islands', 'Coral Sea Islands', 'Costa Rica', "Cote d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dhekelia', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Europa Island', 'Falkland Islands (Islas Malvinas)', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'French Southern and Antarctic Lands', 'Gabon', 'Gambia, The', 'Gaza Strip', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Glorioso Islands', 'Greece', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard Island and McDonald Islands', 'Holy See (Vatican City)', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Jan Mayen', 'Japan', 'Jersey', 'Jordan', 'Juan de Nova Island', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia, Federated States of', 'Moldova', 'Monaco', 'Mongolia', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nauru', 'Navassa Island', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paracel Islands', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Helena', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Pierre and Miquelon', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Georgia and the South Sandwich Islands', 'Spain', 'Spratly Islands', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tromelin Island', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Virgin Islands', 'Wake Island', 'Wallis and Futuna', 'West Bank', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe']) }}</div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="sheet h-100">
+        <h4 class="h4 font-weight-bold">Select 2</h4>
+        <div class="mb-3">{{ ac.select('select-2', label='Basic select', options=['Afghanistan', 'Akrotiri', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Ashmore and Cartier Islands', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas, The', 'Bahrain', 'Bangladesh', 'Barbados', 'Bassas da India', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Clipperton Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Cook Islands', 'Coral Sea Islands', 'Costa Rica', "Cote d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dhekelia', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Europa Island', 'Falkland Islands (Islas Malvinas)', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'French Southern and Antarctic Lands', 'Gabon', 'Gambia, The', 'Gaza Strip', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Glorioso Islands', 'Greece', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard Island and McDonald Islands', 'Holy See (Vatican City)', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Jan Mayen', 'Japan', 'Jersey', 'Jordan', 'Juan de Nova Island', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia, Federated States of', 'Moldova', 'Monaco', 'Mongolia', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nauru', 'Navassa Island', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paracel Islands', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Helena', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Pierre and Miquelon', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Georgia and the South Sandwich Islands', 'Spain', 'Spratly Islands', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tromelin Island', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Virgin Islands', 'Wake Island', 'Wallis and Futuna', 'West Bank', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe']) }}</div>
+        <div class="mb-3">{{ ac.select('select-22', multiple=true, label='Multi select', options=['Afghanistan', 'Akrotiri', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Ashmore and Cartier Islands', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas, The', 'Bahrain', 'Bangladesh', 'Barbados', 'Bassas da India', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Clipperton Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros', 'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Cook Islands', 'Coral Sea Islands', 'Costa Rica', "Cote d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dhekelia', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Europa Island', 'Falkland Islands (Islas Malvinas)', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'French Southern and Antarctic Lands', 'Gabon', 'Gambia, The', 'Gaza Strip', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Glorioso Islands', 'Greece', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard Island and McDonald Islands', 'Holy See (Vatican City)', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Jan Mayen', 'Japan', 'Jersey', 'Jordan', 'Juan de Nova Island', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia, Federated States of', 'Moldova', 'Monaco', 'Mongolia', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nauru', 'Navassa Island', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paracel Islands', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Helena', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Pierre and Miquelon', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Georgia and the South Sandwich Islands', 'Spain', 'Spratly Islands', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tromelin Island', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Virgin Islands', 'Wake Island', 'Wallis and Futuna', 'West Bank', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe']) }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+  <div class="col-lg-6">
+    <div class="sheet h-100">
+      <h4 class="h4 font-weight-bold">Input Mask</h4>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="isbn1">ISBN 1</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="isbn1" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('ISBN-1') }}>
+          <div class="support-text mb-2">000-00-000-0000-0</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="isbn2">ISBN 2</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="isbn2" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('ISBN-2') }}>
+          <div class="support-text mb-2">000 00 000 0000 0</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="isbn3">ISBN 3</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="isbn3" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('ISBN-3') }}>
+          <div class="support-text mb-2">000/00/000/0000/0</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="ipv4">IPv4</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="ipv4" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('IPv4') }}>
+          <div class="support-text mb-2">0ZZ.0ZZ.0ZZ.0ZZ</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="taxid">Tax ID</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="taxid" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('Tax ID') }}>
+          <div class="support-text mb-2">00-0000000</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="phone">Phone</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="phone" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('Phone') }}>
+          <div class="support-text mb-2">(000) 000-0000</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="Currency">Currency</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="Currency" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('Currency') }}>
+          <div class="support-text mb-2">$ 000,000,000.00</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="Date">Date</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="Date" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('Date') }}>
+          <div class="support-text mb-2">d0/m0/yY00</div></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3"><label class="m-0 d-flex align-items-center justify-content-end" style="height: 32px;" for="PostalCode">Postal Code</label></div>
+        <div class="col-lg-9">
+          <input type="text" id="PostalCode" class="basic-login-form__input basic-login-form__input_blue mb-1" {{ ac.data_input_mask('Postal Code') }}>
+          <div class="support-text mb-2">00000</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="sheet h-100">
+      <h4 class="h4 font-weight-bold">Range Slider</h4>
+      <div class="mb-3">{{ ac.stripped_slider('strippedSlider', value=50) }}</div>
+      <div class="mb-3">{{ ac.stripped_slider('strippedSlider', labelled=false, type='double', step=10, valueL=30, valueR=60) }}</div>
+      <div class="mb-3">{{ ac.stripped_slider('strippedSliderLabelled', skin='orange', labelled=true, min=1, max=800, prefix='$', label='Maximum price:', value=300) }}</div>
+      <div class="mb-3">{{ ac.stripped_slider('strippedSliderLabelledDouble', type='double', skin='red', labelled=true, min=100, max=900, prefix='$', label='Price range:', valueL=300, valueR=400, step=100) }}</div>
+      <div class="mb-3">{{ ac.stripped_slider('strippedSliderTooltip', skin='lightblue', min=1900, max=2100, enableTooltip=true, value=1950) }}</div>
+      <div class="mb-5">{{ ac.stripped_slider('strippedSliderDoubleTooltip', type='double', skin='green', min=1900, max=2100, enableTooltip=true, valueL=1970, valueR=2020) }}</div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-center" style="height: 150px;">
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical1', orientation='vertical', skin='lightblue', value=80) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical2', orientation='vertical', skin='lightblue', value=60) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical3', orientation='vertical', skin='lightblue', value=40) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical4', orientation='vertical', skin='lightblue', value=60) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical5', orientation='vertical', skin='lightblue', value=80) }}</div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-center" style="height: 150px;">
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical1', orientation='vertical', skin='purple', value=80) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical2', orientation='vertical', skin='purple', value=60) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical3', orientation='vertical', skin='purple', value=40) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical4', orientation='vertical', skin='purple', value=60) }}</div>
+            <div class="mr-4">{{ ac.stripped_slider('strippedSliderVertical5', orientation='vertical', skin='purple', value=80) }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col-lg-4" style="height: 120px;">
+          {{ ac.stripped_slider('verticalRange', orientation='vertical', skin='green', type='double', labelled=true, label='Vertical Range:', prefix='$') }}
+        </div>
+        <div class="col-lg-4">
+          <div class="h-100">{{ ac.stripped_slider('vertical', orientation='vertical', skin='gray', value=80, labelled=true, label='Vertical') }}</div>
+        </div>
+        <div class="col-lg-4">
+          <div class="h-100">{{ ac.stripped_slider('verticalTooltip', orientation='vertical', skin='orange', value=73, labelled=true, label='Vertical tooltip', enableTooltip=true) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row mb-4">
+  <div class="col-lg-6">
+    <div class="sheet h-100">
+      <h4 class="h4 font-weight-bold">Date picker</h4>
+      <div class="mb-3">{{ ac.date_picker('simpleDataPicker', label='Simple data input format') }}</div>
+      <div class="mb-3">{{ ac.date_picker('monthSelect', label='Month select', startView=1, endView=1   ) }}</div>
+      <div class="mb-3">{{ ac.date_picker('decade', label='Decade view', startView=2, endView=0) }}</div>
+      <div class="mb-3">{{ ac.date_picker('oneYear', label='One Year View', startView=1, endView=0) }}</div>
+      <div class="mb-3">{{ ac.date_picker('rangeSelect', label='Range select', range=true) }}</div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="sheet h-100">
+      <h4 class="h4 font-weight-bold">Color Picker</h4>
+      <label for="colorPicker">HEX</label>
+      <div class="mb-3"><input type="text" class="color-picker" id="colorPicker" name="colorPicker" data-type="hex" value="#2b64e0"></div>
+      <label for="colorPicker">RGB</label>
+      <div class="mb-3"><input type="text" class="color-picker" id="colorPicker2" name="colorPicker2" data-type="rgb" value="rgba(26, 138, 73, 0.79)"></div>
+      <label for="colorPicker">HSL</label>
+      <div class="mb-3"><input type="text" class="color-picker" id="colorPicker3" name="colorPicker3" data-type="hsb" value="hsb(359,89,77,79%)"></div>
+    </div>
+  </div>
+  </div>
+  <div class="row pb-3_4">
+  <div class="col-lg-12">
+    <div class="sheet h-100">
+      <h4 class="h4 font-weight-bold">Touch Spin</h4>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="ts1">Basic example with empty value</label>
+          <input type="text" class="touch-spin" id="ts1">
+        </div>
+        <div class="col-lg-4">
+          <label for="ts2">Example with postfix</label>
+          <input type="text" class="touch-spin" id="ts2" min="0" max="100" step="0.10" data-postfix="%">
+        </div>
+        <div class="col-lg-4">
+          <label for="ts3">Example with postfix</label>
+          <input type="text" class="touch-spin" id="ts3" min="0" max="100" data-vertical="">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

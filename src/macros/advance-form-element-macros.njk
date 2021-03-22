@@ -1,0 +1,153 @@
+{% macro knob_dial(value, size=85, responsiveSize=None, min=None, max=None, step=None, offset=None, arc=None,
+  displayPrevious=false, anticlockwise=false, rounded=false, noedit=false,
+  skin=None, thickness=None, readonly=false, cursor=false, fgColor=None, bgColor=None, id=None) %}
+<div style="width: {{ size }}px; height: {{ size }}px; display:block; position:relative;">
+  <input type="text" value="{{ value }}" class="dial"
+    data-width="100%"
+    data-height="100%"
+    style="{% if readonly or noedit %}pointer-events: none;{% endif %}"
+    {% if id != None %} id="{{ id }}"{% endif %}
+    {% if min != None %} data-min="{{ min }}"{% endif %}
+    {% if max != None %} data-max="{{ max }}"{% endif %}
+    {% if displayPrevious %} data-displayPrevious="true"{% endif %}
+    {% if step != None %} data-step="{{ step }}"{% endif %}
+    {% if anticlockwise %} data-rotation="anticlockwise"{% endif %}
+    {% if rounded %} data-linecap="rounded"{% endif %}
+    {% if offset != None %} data-angleOffset="{{ offset }}"{% endif %}
+    {% if arc != None %} data-angleArc="{{ arc }}"{% endif %}
+    {% if skin != None %} data-skin="{{ skin }}"{% endif %}
+    {% if thickness != None %} data-thickness="{{ thickness }}"{% endif %}
+    {% if readonly %} data-readOnly="true"{% endif %}
+    {% if cursor %} data-cursor="true"{% endif %}
+    {% if bgColor != None %} data-bgColor="{{ bgColor }}"{% endif %}
+    {% if fgColor != None %} data-fgColor="{{ fgColor }}"{% endif %}>
+</div>
+{% endmacro %}
+{% macro range_slider(id, type='single', min=0, max=100, from=0, to=100, step=1,
+   min_interval=None, max_interval=None, drag_interval=None, grid=false
+) %}
+  <input id="{{ id }}" class="range-slider"
+       data-min="{{ min }}"
+       data-max="{{ max }}"
+       data-step="{{ step }}"
+       data-type="{{ type }}"
+       data-from="{{ from }}"
+       data-to="{{ to }}"
+       data-grid="{{ grid }}"
+       {% if min_interval != None %} data-min-interval="{{ min_interval }}"{% endif %}
+       {% if max_interval != None %} data-max-interval="{{ max_interval }}"{% endif %}
+       {% if drag-interval != None %} data-drag-interval="{{ drag-interval }}"{% endif %}
+
+  >
+{% endmacro %}
+{% macro range_slider_price(id, min=0, max=5000, from=None, to=None) %}
+  <input id="{{ id }}" class="range-slider-price" data-min="{{ min }}" data-max="{{ max }}"
+  {% if from != None %} data-from="{{ from }}"{% endif %}
+  {% if to != None %} data-to="{{ to }}"{% endif %}>
+{% endmacro %}
+{% macro range_slider_carats(id, min=0, max=10, from=None) %}
+  <input id="{{ id }}" class="range-slider-carats" data-min="{{ min }}" data-max="{{ max }}"
+  {% if from != None %} data-from="{{ from }}"{% endif %}>
+{% endmacro %}
+{% macro range_slider_temperature(id, min=-50, max=50, from=None) %}
+  <input id="{{ id }}" class="range-slider-temperature" data-min="{{ min }}" data-max="{{ max }}"
+  {% if from != None %} data-from="{{ from }}"{% endif %}>
+{% endmacro %}
+{% macro range_slider_date(id, from=None) %}
+  <input id="{{ id }}" class="range-slider-date"
+  {% if from != None %} data-from="{{ from }}"{% endif %}>
+{% endmacro %}
+{% macro select(id, label=None, multiple=false, options=[], placeholder='Select') %}
+  <div class="my-custom-select{% if multiple %} my-custom-select_multiple{% endif %}">
+  {% if label != None %}
+    <label for="{{ id }}">{{ label }}</label>
+  {% endif %}
+    <div class="my-custom-select__container w-100">
+      <span class="my-custom-select__placeholder">{{ placeholder }}</span>
+    </div>
+    <select class="d-none" name="{{ id }}" id="{{ id }}"{% if multiple %} multiple=""{% endif %}>
+      {% for option in options %}
+        <option value="{{ option }}">{{ option }}</option>
+      {% endfor %}
+    </select>
+    <div class="my-custom-select__drop" style="display: none;">
+      <div class="my-custom-select__search-container">
+        <input type="text" class="my-custom-select__search-input">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="my-custom-select__scroll">
+        <ul class="my-custom-select__menu list-group">
+        {% for option in options %}
+          <li class="list-group-item list-group-item-action my-custom-select__option" data-value="{{ option }}">{{ option }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+{% macro data_input_mask(type) %}
+  {# type - one of:
+    ISBN-1: 999-99-999-9999-9
+    ISBN-2: 999 99 999 9999 9
+    ISBN-3: 999/99/999/9999/9
+    IPv4: 192.168.100.200
+    Tax ID:  99-9999999
+    Phone: (999) 999-9999
+    Currency: $ 999,999,999.99
+    Date: dd/mm/yyyy
+    Postal Code: 99999
+  #}
+  data-inputMask="{{ type }}"
+{% endmacro %}
+{% macro stripped_slider(
+    id, value=None, valueL=None, valueR=None,
+    type='single', skin='purple', label='slider', min=0, max=100, step=1, labelled=false, prefix='', postfix='',
+    enableTooltip=false, orientation='horizontal'
+  ) %}
+  {% if valueR == None %}
+    {% set valueR = value %}
+  {% endif %}
+  {#  skins: purple, orange, lightblue, green
+      types: single, double
+  #}
+  <div class="stripped-slider{% if type == 'double' %} stripped-slider_double{% endif %} stripped-slider_{{ skin }}{% if labelled %} stripped-slider_labelled{% endif %}{% if enableTooltip %} stripped-slider_tooltip{% endif %} stripped-slider_{{ orientation }}" data-prefix="{{ prefix }}" data-postfix="{{ postfix }}">
+    <div class="stripped-slider__head">
+      <label for="{{ id }}_left" class="stripped-slider__label{% if not labelled %} sr-only{% endif %}">{{ label }}</label>
+      <div class="d-flex flex-wrap">
+        {% if type == 'double' %}
+        <input class="stripped-slider__input-right" type="text" min="{{ min }}" max="{{ max }}" step="{{ step }}" name="{{ id }}_right" id="{{ id }}_right" value="{% if valueL == None %}{{ min }}{% else %}{{ valueL }}{% endif %}">
+        {% if labelled %}<span class="stripped-slider__defis">-</span>{% endif %}
+        {% endif %}
+        <input class="stripped-slider__input-left" type="text" min="{{ min }}" max="{{ max }}" step="{{ step }}" name="{{ id }}_left" id="{{ id }}_left" value="{% if valueR == None %}{{ min }}{% else %}{{ valueR }}{%  endif %}">
+      </div>
+    </div>
+    <div class="stripped-slider__container">
+      <div class="stripped-slider__background"></div>
+      <div class="stripped-slider__progress" role="progressbar" style="{% if orientation == 'horizontal' %}width{% else %}height{% endif %}: 0" aria-valuenow="{{ min }}" aria-valuemin="{{ min }}" aria-valuemax="{{ max }}"></div>
+      <div class="stripped-slider__slide-area">
+        <i class="stripped-slider__fa-handle">
+          <span class="stripped-slider__tooltip"></span>
+        </i>
+        {% if type == 'double' %}
+        <i class="stripped-slider__fa-handle-right">
+          <span class="stripped-slider__tooltip"></span>
+        </i>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+{% macro date_picker(id, label=None, startView=0, endView=0, range=false) %}
+  {% if label != None %}
+    <label for="{{ id }}" class="">{{ label }}</label>
+  {% endif %}
+  <div class="input-group date-picker{% if range %} input-daterange{% endif %}" data-range="{{ range }}" data-start-view="{{ startView }}" data-end-view="{{ endView }}">
+    {% if not range %}<span class="input-group-prepend">
+      <span class="input-group-text bg-white rounded-0 border-lightgray"><i class="fa fa-calendar"></i></span></span>{% endif %}
+    <input id="{{ id }}" name="{{ id }}_from" type="text" class="basic-login-form__input basic-login-form__input_blue date-picker__input">
+    {% if range %}
+    <span class="input-group-addon" style="background: #eeeeee;">to</span>
+    <input id="{{ id }}_to" name="{{ id }}_to" type="text" class="basic-login-form__input basic-login-form__input_blue date-picker__input">
+    {% endif %}
+  </div>
+{% endmacro %}

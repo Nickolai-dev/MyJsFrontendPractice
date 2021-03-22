@@ -1,7 +1,7 @@
 {% import 'macros/useful_macros.njk' as macros %}
 {% import 'macros/basic-form-element-macros.njk' as bc %}
 {% macro include_modals() %}
-<div id="messagesMenu" class="modal w-100 h-100 position-fixed" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="messagesMenuLabel" aria-hidden="true">
+<div id="messagesMenu" class="modal w-100 h-100 position-absolute" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="messagesMenuLabel" aria-hidden="true">
   <div class="modal-dialog" role="menu">
     <div class="modal-content dropdown-menu-material dropdown-menu-material_center">
       <div class="modal-header d-none">
@@ -40,7 +40,7 @@
     </div>
   </div>
 </div>
-<div id="notificationsMenu" class="modal w-100 h-100 position-fixed" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="notificationsMenuLabel" aria-hidden="true">
+<div id="notificationsMenu" class="modal w-100 h-100 position-absolute" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="notificationsMenuLabel" aria-hidden="true">
   <div class="modal-dialog" role="menu">
     <div class="modal-content dropdown-menu-material dropdown-menu-material_center">
       <div class="modal-header d-none">
@@ -82,7 +82,7 @@
     </div>
   </div>
 </div>
-<div id="otherMenu" class="modal w-100 h-100 position-fixed" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="otherMenuLabel" aria-hidden="true">
+<div id="otherMenu" class="modal w-100 h-100 position-absolute" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="otherMenuLabel" aria-hidden="true">
   <div class="modal-dialog" role="menu">
     <div class="modal-content dropdown-menu-material dropdown-menu-material_large">
       <div class="modal-header d-none">
