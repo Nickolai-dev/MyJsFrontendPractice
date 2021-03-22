@@ -12,6 +12,9 @@ require("jquery-mask-plugin/dist/jquery.mask.min");
 require("bootstrap-datepicker/dist/js/bootstrap-datepicker.min");
 require("jquery-colpick/js/colpick");
 require("../my-custom-plugins/jquery.drag-drop-upload/js/jquery.drag-drop-upload");
+require("tinymce/tinymce");
+require("tinymce/themes/silver/theme");
+require("tinymce/icons/default/icons");
 // if css-loader does not work use this hack: https://github.com/parcel-bundler/parcel/issues/2936#issuecomment-504583339
 // (you need to modify node files anyway)
 

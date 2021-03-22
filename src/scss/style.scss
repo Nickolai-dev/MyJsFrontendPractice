@@ -279,6 +279,10 @@ $side-menu-width: 205px;
 @import "jquery-colpick/colpick";
 @import "irs/irs";
 @import "src/my-custom-plugins/jquery.drag-drop-upload/scss/jquery.drag-drop-upload";
+@import "tinymce/skins/content/default/content.min.css";
+@import "tinymce/skins/ui/oxide/content.min.css";
+@import "tinymce/skins/ui/oxide-dark/content.min.css";
+
 
 $border-radius-base: $border-radius;
 $dropdown-border: $dropdown-border-color;

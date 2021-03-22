@@ -12,8 +12,8 @@
   "license": "MIT, original design by (c) colorlib, https://colorlib.com. Redesign by N. Soleniy, n.solenii2016@gmail.com",
   "author": "n.solenii2016@gmail.com",
   "scripts": {
-    "build": "npm run clean && parcel build src/index.njk --no-cache --public-url \"./\" --no-source-maps",
-    "dev": "parcel src/index.njk --public-url \"./\" --no-source-maps",
+    "build": "npm run clean && parcel build src/index.njk --no-cache --public-url \"./\" --no-source-maps && node postbuild.js",
+    "dev": "parcel src/index.njk --public-url \"./\" --no-source-maps && node postbuild.js",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist .*cache*/ test/tests/*/dist",
@@ -41,6 +41,7 @@
     "parcel-bundler": "^1.12.4",
     "plugin": "^0.3.3",
     "plugins": "^0.4.2",
-    "src": "^1.1.2"
+    "src": "^1.1.2",
+    "tinymce": "^5.7.1"
   }
 }
