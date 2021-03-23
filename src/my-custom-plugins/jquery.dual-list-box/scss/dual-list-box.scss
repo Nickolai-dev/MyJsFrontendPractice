@@ -6,6 +6,12 @@
   &__comment {
 
   }
+  &__inner-comment {
+    background-color: transparent;
+    &_filtered {
+      background-color: #f0ad4e;
+    }
+  }
   &__filter {
     width: 100%;
   }

@@ -33,7 +33,7 @@
         }
         select1.hide();
         select2.hide();
-        let list1 = {block: $('<div class="dual-list-box"><div class="dual-list-box__comment"></div><div class="dual-list-box__filter"><input type="text" class="dual-list-box__filter-input"></div><div class="dual-list-box__list-wrapper"><div class="dual-list-box__move-all"></div><div class="dual-list-box__list-container"></div></div></div>')},
+        let list1 = {block: $('<div class="dual-list-box"><div class="dual-list-box__comment-line"><div class="dual-list-box__comment"></div><div class="dual-list-box__show-all-btn">show all</div></div><div class="dual-list-box__filter"><input type="text" class="dual-list-box__filter-input"></div><div class="dual-list-box__list-wrapper"><div class="dual-list-box__move-all"></div><div class="dual-list-box__list-container"></div></div></div>')},
             list2 = {block: list1.block.clone()}, doc = $(document), selection = {first: undefined, last: undefined, selection: undefined};
         let createOption = function(optionNative) {
           let option = $('<div class="dual-list-box__option"></div>');
@@ -41,27 +41,35 @@
           return option;
         }
         let createNativeOption = function(option) {
-          let optionNative = $('<option></option>');
-          optionNative.attr({'selected': '', value: option.attr('value')}).text(option.text());
+          let optionNative = $('<option></option>'), val = option.length !== undefined ? option.attr('value') : $(option).attr('value'),
+              text = option.length !== undefined ? option.text() : option.innerHTML;
+          optionNative.attr({'selected': '', value: val}).text(text);
           return optionNative;
         }
         let updateForward = function() {
-          let payload = [];
+          let payload = [], filterValue = this.filterInput.val(), reg = new RegExp('^' + filterValue, 'i'), lengthAll = 0;
           this.optionsNative = this.selectNative.find('option');
           for (let i = 0; i < this.optionsNative.length; i++) {
             let option = createOption(this.optionsNative[i]);
-            payload.push(option);
+            if (option.text().match(reg) !== null) {
+              payload.push(option);
+            }
+            lengthAll++;
           }
-          list.options = payload;
-          list.container.empty().append(payload);
+          this.options = payload;
+          this.container.empty().append(payload);
+          setFilterProps.call(this, lengthAll, payload.length);
         }
-        let updateReverse = function() {
-          let payload = [];
-          for (let i = 0; i < this.options.length; i++) {
-            let option = createNativeOption(this.options[i]);
-            payload.push(option);
+        let setFilterProps = function (lengthAll, lengthCurrent) {
+
+          let status = lengthCurrent < lengthAll ? 'Filtered' : 'Showing all',
+              comment = $('<span class="dual-list-box__inner-comment' + (status.match(/filtered/i) !== null ? ' dual-list-box__inner-comment_filtered' : '') + '">' + status + '</span><span class="dual-list-box__comment-info">' + lengthCurrent + ' of ' + lengthAll + '</span>');
+          this.comment.html(comment);
+          if (status.match(/filtered/i) !== null) {
+            this.showAllBtn.show();
+          } else {
+            this.showAllBtn.hide();
           }
-          list.selectNative.empty().append(payload);
         }
         let createSelection = function() {
           if (selection.first === undefined) {
@@ -77,7 +85,6 @@
             last = selection.first;
             sel = selection.last.nextUntil(selection.first).add(selection.last).add(selection.first);
           }
-
           list1.container.add(list2.container).children('.dual-list-box__option').removeClass('dual-list-box__option_selected')
           sel.addClass('dual-list-box__option_selected');
           selection.selection = sel;
@@ -101,18 +108,31 @@
           move.call(this);
         }
         let move = function() {
-          let another = [list1, list2].filter(l => l !== this)[0];
-          selection.selection.appendTo(another.container);
-          updateReverse.call(another);
-          selection.selection.removeClass('dual-list-box__option_selected');
+          let another = [list1, list2].filter(l => l !== this)[0], sel = selection.selection;
+          insertOptions.call(another, sel);
+          removeOptions.call(this, sel);
+          sel.removeClass('dual-list-box__option_selected');
+          updateForward.call(this);
+          updateForward.call(another);
         }
         let insertOptions = function (options) {
-
+          let payload = [];
+          for (let i = 0; i < options.length; i++) {
+            payload.push(createNativeOption(options[i]));
+          }
+          this.selectNative.append(payload);
+        }
+        let removeOptions = function (options) {
+          for (let i = 0; i < options.length; i++) {
+            let val = options[i].length !== undefined ? options[i].attr('value') : $(options[i]).attr('value');
+            this.selectNative.find('option[value="' + val + '"]').remove();
+          }
         }
         for (let i = 0; i < 2; i++) {
           let list = [list1, list2][i];
           list.selectNative = [select1, select2][i];
           list.comment = list.block.find('.dual-list-box__comment');
+          list.showAllBtn = list.block.find('.dual-list-box__show-all-btn');
           list.filterInput = list.block.find('.dual-list-box__filter input');
           list.moveAllBtn = list.block.find('.dual-list-box__move-all');
           list.moveAllBtn.append('<i class="fa ' + ['fa-caret-right', 'fa-caret-left'][i] + '"></i><i class="fa ' + ['fa-caret-right', 'fa-caret-left'][i] + '"></i>');
@@ -127,6 +147,22 @@
               dragEnd.call(list, ev);
             });
           });
+          let moveAll = function (ev) {
+            selection.selection = list.container.find('.dual-list-box__option');
+            move.call(list);
+          }
+          list.moveAllBtn.on('click', moveAll);
+          list.filterInput.on('keyup', ev => {
+            if (ev.which === 13) {
+              moveAll(ev);
+            } else {
+              updateForward.call(list);
+            }
+          });
+          list.showAllBtn.on('click', ev => {
+            list.filterInput.val('');
+            updateForward.call(list);
+          }).hide();
         }
       }, addOptions: function (options) {
 
