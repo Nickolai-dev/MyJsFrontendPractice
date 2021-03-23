@@ -12,6 +12,7 @@ require("jquery-mask-plugin/dist/jquery.mask.min");
 require("bootstrap-datepicker/dist/js/bootstrap-datepicker.min");
 require("jquery-colpick/js/colpick");
 require("../my-custom-plugins/jquery.drag-drop-upload/js/jquery.drag-drop-upload");
+require("../my-custom-plugins/jquery.dual-list-box/js/jquery.dual-list-box");
 require("tinymce/tinymce");
 require("tinymce/themes/silver/theme");
 require("tinymce/icons/default/icons");

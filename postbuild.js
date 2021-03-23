@@ -1,7 +1,9 @@
 /* replaces files into DIST directory */
 const replaceRules = [ // TODO: make it reg-sensitive
   'node_modules/tinymce/skins/content/default/content.css -> skins/content/default/content.css',
-  'node_modules/tinymce/skins/ui/oxide/content.css -> skins/ui/oxide/content.css',
+  'node_modules/tinymce/skins/content/writer/content.css -> skins/content/writer/content.css',
+  'node_modules/tinymce/skins/ui/oxide/content.min.css -> skins/ui/oxide/content.min.css',
+  'node_modules/tinymce/skins/ui/oxide/skin.min.css -> skins/ui/oxide/skin.min.css',
   'node_modules/tinymce/skins/ui/oxide-dark/content.css -> skins/ui/oxide-dark/content.css',
 ];
 const distDir = 'dist';

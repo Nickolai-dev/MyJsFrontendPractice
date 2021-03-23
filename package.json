@@ -12,12 +12,13 @@
   "license": "MIT, original design by (c) colorlib, https://colorlib.com. Redesign by N. Soleniy, n.solenii2016@gmail.com",
   "author": "n.solenii2016@gmail.com",
   "scripts": {
-    "build": "npm run clean && parcel build src/index.njk --no-cache --public-url \"./\" --no-source-maps && node postbuild.js",
-    "dev": "parcel src/index.njk --public-url \"./\" --no-source-maps && node postbuild.js",
+    "build": "npm run clean && parcel build src/index.njk --no-cache --public-url \"./\" --no-source-maps npm run postbuild",
+    "dev": "parcel src/index.njk --public-url \"./\" && npm run postbuild",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist .*cache*/ test/tests/*/dist",
-    "clean-cache": "rm -rf .*cache*/"
+    "clean-cache": "rm -rf .*cache*/",
+    "postbuild": "node postbuild.js"
   },
   "devDependencies": {
     "bootstrap": "^4.5.3",

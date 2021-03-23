@@ -1,0 +1,32 @@
+
+
+.dual-list-box {
+  width: 100%;
+
+  &__comment {
+
+  }
+  &__filter {
+    width: 100%;
+  }
+  &__filter-input {
+    width: 100%;
+    min-width: 0;
+    outline: none;
+  }
+  &__list-wrapper {
+
+  }
+  &__move-all {
+
+  }
+  &__list-container {
+
+  }
+  &__option {
+    user-select: none;
+    &_selected {
+      background-color: #00acee;
+    }
+  }
+}

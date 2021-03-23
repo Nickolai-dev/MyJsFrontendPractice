@@ -10,15 +10,23 @@
     <div class="sheet h-100">
       <form action="#">
         <h4 class="h4 font-weight-bold">Tinymce Editor</h4>
-        <textarea name="text" id="tinymce"></textarea>
+        <p>Highly-configurable rich-text editor</p>
+        <textarea name="text" id="tinymce" rows="20">
+          <h2 style="font-family: &quot;Open Sans&quot;, sans-serif; font-size: 20px;">
+              <span style="font-weight: bold;">Summernote</span><font face="Comic Sans MS"> WYSIWYG edi</font><span style="font-weight: bold;">tor</span>
+          </h2>
+          <p style="color:rgb(51, 51, 51);font-size: 14px;line-height: 24px;">The fastest way to get Summernote WYSIWYG editor is powerfull JavaScript plugin. you can easily maintance typography system</p>
+          <p style="font-size: 14px; line-height: 24px;"><span style="color: rgb(206, 0, 0);">The fastest way to get Summernote WYSIWYG editor is powerfull JavaScript plugin. you can easily maintance typography system</span>
+              <br>
+          </p>
+        </textarea>
       </form>
     </div>
   </div>
   </div>
   <script type="text/javascript">
   tinymce.init({
-    selector: '#tinymce',
-    content_css : 'writer'
+    selector: '#tinymce'
   });
   </script>
 {% endblock %}
