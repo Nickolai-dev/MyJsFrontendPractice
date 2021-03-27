@@ -33,7 +33,7 @@
         }
         select1.hide();
         select2.hide();
-        let list1 = {block: $('<div class="dual-list-box"><div class="dual-list-box__comment-line"><div class="dual-list-box__comment"></div><div class="dual-list-box__show-all-btn">show all</div></div><div class="dual-list-box__filter"><input type="text" class="dual-list-box__filter-input"></div><div class="dual-list-box__list-wrapper"><div class="dual-list-box__move-all"></div><div class="dual-list-box__list-container"></div></div></div>')},
+        let list1 = {block: $('<div class="dual-list-box"><div class="dual-list-box__comment-line"><div class="dual-list-box__comment"></div><div class="dual-list-box__show-all-btn">show all</div></div><div class="dual-list-box__filter"><input type="text" placeholder="Filter" class="dual-list-box__filter-input"></div><div class="dual-list-box__list-wrapper"><div class="dual-list-box__move-all"></div><div class="dual-list-box__list-container"></div></div></div>')},
             list2 = {block: list1.block.clone()}, doc = $(document), selection = {first: undefined, last: undefined, selection: undefined};
         let createOption = function(optionNative) {
           let option = $('<div class="dual-list-box__option"></div>');
@@ -56,14 +56,25 @@
             }
             lengthAll++;
           }
+          payload = payload.sort((optionA, optionB) => {
+            let valA = optionA.text(), valB = optionB.text();
+            for (let i = 0; i < valA.length && i < valB.length; i++) {
+              if (valA[i] > valB[i]) {
+                return 1;
+              }
+              if (valB[i] > valA[i]) {
+                return -1;
+              }
+            }
+            return valA.length > valB.length ? 1 : valA.length < valB.length ? -1 : 0;
+          });
           this.options = payload;
           this.container.empty().append(payload);
           setFilterProps.call(this, lengthAll, payload.length);
         }
         let setFilterProps = function (lengthAll, lengthCurrent) {
-
           let status = lengthCurrent < lengthAll ? 'Filtered' : 'Showing all',
-              comment = $('<span class="dual-list-box__inner-comment' + (status.match(/filtered/i) !== null ? ' dual-list-box__inner-comment_filtered' : '') + '">' + status + '</span><span class="dual-list-box__comment-info">' + lengthCurrent + ' of ' + lengthAll + '</span>');
+              comment = $('<span class="dual-list-box__inner-comment' + (status.match(/filtered/i) !== null ? ' dual-list-box__inner-comment_filtered' : '') + '">' + status + '</span><span class="dual-list-box__comment-info">' + lengthCurrent + (lengthCurrent !== lengthAll ? ' of ' + lengthAll : '') + '</span>');
           this.comment.html(comment);
           if (status.match(/filtered/i) !== null) {
             this.showAllBtn.show();
@@ -106,8 +117,12 @@
         let dragEnd = function (ev) {
           selection.last = selection.first = undefined;
           move.call(this);
+          selection.selection = undefined;
         }
         let move = function() {
+          if (selection.selection === undefined) {
+            return;
+          }
           let another = [list1, list2].filter(l => l !== this)[0], sel = selection.selection;
           insertOptions.call(another, sel);
           removeOptions.call(this, sel);
@@ -150,6 +165,7 @@
           let moveAll = function (ev) {
             selection.selection = list.container.find('.dual-list-box__option');
             move.call(list);
+            selection.selection = undefined;
           }
           list.moveAllBtn.on('click', moveAll);
           list.filterInput.on('keyup', ev => {
