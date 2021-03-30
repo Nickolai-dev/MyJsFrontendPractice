@@ -1,0 +1,40 @@
+{% extends 'base.njk' %}
+
+{% block current_path %}
+  Home:index.html/Code Editor:code-editor.html
+{% endblock %}
+
+{% block body %}
+  <div class="row py-3_4">
+  <div class="col-lg-6">
+    <div class="sheet h-100">
+      <form action="#" class="">
+        <textarea name="codeMirror1" id="codeDark"></textarea>
+        <button type="submit" class="d-none">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="sheet h-100">
+      <textarea name="codeMirror2" id="codeLight"></textarea>
+      <button type="submit" class="d-none">Submit</button>
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+  $(function () {
+    var editor_one = CodeMirror.fromTextArea(document.getElementById("codeDark"), {
+      lineNumbers: true,
+      matchBrackets: true,
+      styleActiveLine: true,
+      theme: "ambiance"
+    });
+
+    var editor_two = CodeMirror.fromTextArea(document.getElementById("codeLight"), {
+      lineNumbers: true,
+      matchBrackets: true,
+      styleActiveLine: true
+    });
+  });
+  </script>
+{% endblock %}

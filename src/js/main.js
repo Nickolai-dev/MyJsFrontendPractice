@@ -13,9 +13,15 @@ require("bootstrap-datepicker/dist/js/bootstrap-datepicker.min");
 require("jquery-colpick/js/colpick");
 require("../my-custom-plugins/jquery.drag-drop-upload/js/jquery.drag-drop-upload");
 require("../my-custom-plugins/jquery.dual-list-box/js/jquery.dual-list-box");
+
 require("tinymce/tinymce");
 require("tinymce/themes/silver/theme");
 require("tinymce/icons/default/icons");
+
+var CodeMirror = require("codemirror/lib/codemirror");
+window.CodeMirror = CodeMirror;
+
+
 // if css-loader does not work use this hack: https://github.com/parcel-bundler/parcel/issues/2936#issuecomment-504583339
 // (you need to modify node files anyway)
 

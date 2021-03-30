@@ -283,6 +283,8 @@ $side-menu-width: 205px;
 @import "tinymce/skins/content/default/content.min.css";
 @import "tinymce/skins/ui/oxide/content.min.css";
 @import "tinymce/skins/ui/oxide-dark/content.min.css";
+@import "codemirror/lib/codemirror.css";
+@import "codemirror/theme/ambiance.css";
 
 
 $border-radius-base: $border-radius;
