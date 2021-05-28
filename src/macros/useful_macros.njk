@@ -16,19 +16,19 @@
             <div class="user-select-none accordion-menu__name">{{ collapse['name'] }}</div>
           </div>
         </div>
-      <div class="accordion-menu__container collapse" aria-labelledby="{{ collapseHeadingId }}"
-           data-parent="{{ id }}" id="{{ collapseId }}">
-        <ul class="accordion-menu__content card-body">
-          {% for item in collapse.data %}
-            <li class="accordion-menu__item">
-              <a href="{{ item.link | replace('.html','.njk') | safe_import }}" class="accordion-menu__link">
-                <div class="user-select-none accordion-menu__icon"><i class="fa {{ item['fa-icon'] }}"></i></div>
-                <div class="user-select-none accordion-menu__name">{{ item['name'] }}</div>
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+        <div class="accordion-menu__container collapse" aria-labelledby="{{ collapseHeadingId }}"
+             data-parent="{{ id }}" id="{{ collapseId }}">
+          <ul class="accordion-menu__content card-body">
+            {% for item in collapse.data %}
+              <li class="accordion-menu__item">
+                <a href="{{ item.link | replace('.html','.njk') | safe_import }}" class="accordion-menu__link">
+                  <div class="user-select-none accordion-menu__icon"><i class="fa {{ item['fa-icon'] }}"></i></div>
+                  <div class="user-select-none accordion-menu__name">{{ item['name'] }}</div>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
       </li>
       {% else %}
         <li class="accordion-menu__item">

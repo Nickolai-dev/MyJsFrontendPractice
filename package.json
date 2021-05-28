@@ -1,7 +1,7 @@
 {
-  "name": "jeweller-html-bootstrap-template",
-  "version": "0.0.1",
-  "description": "",
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project",
   "private": true,
   "keywords": [
     "html template",
@@ -12,22 +12,38 @@
   ],
   "author": "n.solenii2016@gmail.com",
   "scripts": {
-    "build": "npm run clean && parcel build src/index.njk --no-cache --public-url \"./\" --no-source-maps npm run postbuild",
+    "build": "webpack --mode=production",
     "dev": "parcel src/index.njk --public-url \"./\" && npm run postbuild",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist .*cache*/ test/tests/*/dist",
     "clean-cache": "rm -rf .*cache*/",
-    "postbuild": "node postbuild.js"
+    "postbuild": "node postbuild.js",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@webpack-cli/generators": "^2.0.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "css-loader": "^5.2.0",
+    "html-webpack-plugin": "^4.5.2",
     "node-forge": "^0.10.0",
     "nunjucks": "^3.2.2",
     "nunjucks-webpack-loader": "^1.0.8",
     "nunjucks-webpack-plugin": "^5.0.0",
-    "sass": "1.32.2",
+    "parcel": "^1.12.4",
+    "parcel-plugin-nunjucks": "^2.2.2",
+    "sass": "^1.32.2",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
     "webpack": "^4.46.0",
-    "webpack-cli": "^4.6.0"
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
@@ -41,6 +57,7 @@
     "jquery-colpick": "^3.1.0",
     "jquery-knob": "^1.2.11",
     "jquery-mask-plugin": "^1.14.16",
+    "parcel-bundler": "^1.12.5",
     "plugin": "^0.3.3",
     "plugins": "^0.4.2",
     "popper.js": "^1.16.1",

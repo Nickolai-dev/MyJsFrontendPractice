@@ -31,7 +31,7 @@ window.jQuery = window.$ = $;
 let getActualSizes = function (s, b=undefined) {
   let elem = typeof s === 'string' ? $(s) : s,
       blockingBlock = b ? (typeof b === 'string' ? $(b) : b) : elem, previousCss  = blockingBlock.attr("style");
-  blockingBlock.css({//position: 'absolute', wtf?
+  blockingBlock.css({//position: 'absolute',
     visibility: 'hidden', display: 'block'});
   let result = {outerHeight: elem.outerHeight(), innerHeight: elem.innerHeight(),
                 outerWidth: elem.outerWidth(), innerWidth: elem.innerWidth()};
